@@ -74,6 +74,7 @@ export class ProductReviewsListComponent
                 },
             )
             .single$.pipe(shareReplay(1));
+        
         this.histogramBinData$ = productWithHistogram$.pipe(
             map(data => (data.product ? data.product.reviewsHistogram : [])),
         );

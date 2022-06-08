@@ -29,12 +29,12 @@ export class ProductEntityResolver {
     reviewsHistogram(@Parent() product: Product) {
         return this.connection.rawConnection
             .createQueryBuilder()
-            .select('ROUND(`rating`)', 'bin')
+            .select('ROUND(rating)', 'bin')
             .addSelect('COUNT(*)', 'frequency')
             .from(ProductReview, 'review')
             .where('review.product = :productId', { productId: product.id })
             .andWhere('review.state = :state', { state: 'approved' })
-            .groupBy('ROUND(`rating`)')
+            .groupBy('ROUND(rating)')
             .getRawMany();
     }
 }
