@@ -9,8 +9,8 @@ export class ProductEntityResolver {
     constructor(private listQueryBuilder: ListQueryBuilder, private connection: TransactionalConnection) {}
 
     @ResolveField()
-    reviews(@Api() apiType: ApiType, @Parent() product: Product, @Args() args: ProductReviewsArgs) {
-        return this.listQueryBuilder
+    async reviews(@Api() apiType: ApiType, @Parent() product: Product, @Args() args: ProductReviewsArgs) {
+        const [items, totalItems] = await this.listQueryBuilder
             .build(ProductReview, args.options || undefined, {
                 where: {
                     product,
@@ -18,11 +18,11 @@ export class ProductEntityResolver {
                 },
                 relations: ['product', 'product.featuredAsset'],
             })
-            .getManyAndCount()
-            .then(([items, totalItems]) => ({
-                items,
-                totalItems,
-            }));
+            .getManyAndCount();
+        return ({
+            items,
+            totalItems,
+        });
     }
 
     @ResolveField()

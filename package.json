@@ -1,0 +1,45 @@
+{
+  "name": "vendure-reviews-plugin",
+  "version": "0.0.1",
+  "description": "A Vendure plugin for product reviews and ratings",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "author": "Biplab Karki <biplabkarki04@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "rimraf lib && tsc",
+    "generate-types": "gql-gen --config codegen.json"
+  },
+  "resolutions": {
+    "tslib": "^2.0.0",
+    "graphql": "15.3.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/fragment-matcher": "^3.2.1",
+    "@graphql-codegen/introspection": "^2.1.1",
+    "@graphql-codegen/near-operation-file-preset": "^2.2.13",
+    "@graphql-codegen/schema-ast": "^2.4.1",
+    "@graphql-codegen/typescript": "^2.5.0",
+    "@graphql-codegen/typescript-compatibility": "^2.1.5",
+    "@graphql-codegen/typescript-operations": "^2.4.1",
+    "@types/jest": "28.1.1",
+    "@types/node": "17.0.41",
+    "@typescript-eslint/eslint-plugin": "5.27.1",
+    "@typescript-eslint/parser": "5.27.1",
+    "@vendure/admin-ui": "^1.6.2",
+    "@vendure/asset-server-plugin": "^1.6.2",
+    "@vendure/core": "^1.6.2",
+    "@vendure/ui-devkit": "^1.6.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "@nestjs/graphql": "^10.0.15"
+  }
+}
